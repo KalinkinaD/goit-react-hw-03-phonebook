@@ -88,10 +88,14 @@ export default class App extends Component {
         </Section>
         <Section title="Contacts">
           {contacts.length > 1 && <Filter onChange={this.handleChange} />}
-          <ContactList
-            contacts={this.filterContactsByName()}
-            onDelete={this.removeContact}
-          />
+          {contacts.length ? (
+            <ContactList
+              contacts={this.filterContactsByName()}
+              onDelete={this.removeContact}
+            />
+          ) : (
+            <p>No contacts in your list!</p>
+          )}
         </Section>
       </>
     );
